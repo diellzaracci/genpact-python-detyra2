@@ -8,8 +8,9 @@ from gradebook.service import (
     list_courses,
     list_enrollments,
     compute_average,
-    compute_gpa
+    compute_gpa,
 )
+
 
 def main():
     parser = argparse.ArgumentParser(description="Gradebook CLI")
@@ -25,7 +26,9 @@ def main():
     parser_enroll = subparsers.add_parser("enroll")
     parser_enroll.add_argument("--student-id", type=int, required=True)
     parser_enroll.add_argument("--course", required=True)
-    parser_enroll.add_argument("--grade", type=int, nargs="+")  # opsionale me vendos note, nargs="+" me shtu multiple nota 
+    parser_enroll.add_argument(
+        "--grade", type=int, nargs="+"
+    )  # opsionale me vendos note, nargs="+" me shtu multiple nota
 
     parser_add_grade = subparsers.add_parser("add-grade")
     parser_add_grade.add_argument("--student-id", type=int, required=True)
@@ -60,21 +63,33 @@ def main():
             if args.grade is not None:
                 for g in args.grade:
                     add_grade(args.student_id, args.course, g)
-                print(f"Added grades {args.grade} for student {args.student_id} in {args.course}")
+                print(
+                    f"Added grades {args.grade} for student {args.student_id} in {args.course}"
+                )
 
         elif args.command == "add-grade":
             for g in args.grade:
                 add_grade(args.student_id, args.course, g)
-            print(f"Added grades {args.grade} for student {args.student_id} in {args.course}")
+            print(
+                f"Added grades {args.grade} for student {args.student_id} in {args.course}"
+            )
 
         elif args.command == "list":
             if args.entity == "students":
                 students = list_students()
-                for s in sorted(students, key=lambda x: x["name"].lower() if args.sort=="name" else x["id"]): # .lower() per me i sortu alfabetikisht
+                for s in sorted(
+                    students,
+                    key=lambda x: x["name"].lower() if args.sort == "name" else x["id"],
+                ):  # .lower() per me i sortu alfabetikisht
                     print(s)
             elif args.entity == "courses":
                 courses = list_courses()
-                for c in sorted(courses, key=lambda x: x["code"].lower() if args.sort=="code" else x["title"]):
+                for c in sorted(
+                    courses,
+                    key=lambda x: (
+                        x["code"].lower() if args.sort == "code" else x["title"]
+                    ),
+                ):
                     print(c)
             elif args.entity == "enrollments":
                 enrollments = list_enrollments()

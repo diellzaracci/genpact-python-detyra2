@@ -3,4 +3,4 @@ __pycache__/
 logs/
 data/gradebook.json
 
-#per mos mi push python cache, logat edhe local data t'gradebook.json
+# per mos mi push python cache, logat edhe local data t'gradebook.json

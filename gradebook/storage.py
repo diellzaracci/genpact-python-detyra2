@@ -2,18 +2,19 @@ import json
 import os
 import logging
 
-#spari mu siguru qe follderat ekzistojne
+# spari mu siguru qe follderat ekzistojne
 os.makedirs("data", exist_ok=True)
 os.makedirs("logs", exist_ok=True)
 
 DATA_PATH = "data/gradebook.json"
 
-#Konfigurimi i llogave
-logging.basicConfig( 
+# Konfigurimi i llogave
+logging.basicConfig(
     filename="logs/app.log",
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(levelname)s - %(message)s",
 )
+
 
 def load_data():
     """Load data from JSON file"""
@@ -25,11 +26,12 @@ def load_data():
             content = f.read()
             data = json.loads(content)
             return data
-        
+
     except json.JSONDecodeError as e:
         print("JSONDecodeError:", e)
         return {"students": [], "courses": [], "enrollments": []}
-    
+
+
 def save_data(data):
     """Save data to JSON file."""
     try:

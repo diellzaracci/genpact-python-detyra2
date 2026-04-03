@@ -1,16 +1,20 @@
 import unittest
 from gradebook.storage import save_data
-from gradebook.service import add_student, add_grade, add_course, enroll, compute_average, compute_gpa
+from gradebook.service import (
+    add_student,
+    add_grade,
+    add_course,
+    enroll,
+    compute_average,
+    compute_gpa,
+)
+
 
 class TestService(unittest.TestCase):
-    
+
     def setUp(self):
         # reset data before each test
-        self.test_data = {
-            "students": [],
-            "courses": [],
-            "enrollments": []
-        }
+        self.test_data = {"students": [], "courses": [], "enrollments": []}
         save_data(self.test_data)
 
     def test_add_students(self):
@@ -51,6 +55,7 @@ class TestService(unittest.TestCase):
 
         gpa = compute_gpa(student_id)
         self.assertEqual(gpa, 90)  # average of 100 and 80
+
 
 if __name__ == "__main__":
     unittest.main()
