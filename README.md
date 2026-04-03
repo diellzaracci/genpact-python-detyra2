@@ -1,7 +1,7 @@
 # Gradebook CLI
 
 ## Overview
-A command-line application to manage students, courses, enrollments, and grades.
+A Python command-line application to manage students, courses, enrollments, and grades.
 
 ## Features
 - Add students
