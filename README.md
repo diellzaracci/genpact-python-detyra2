@@ -44,5 +44,5 @@ python scripts/seed.py
 ## Design Decisions & Limitations
 - Chose JSON for data storage to keep persistence simple and human-readable.
 - Grades must be integers 0-100.
-- GPA is the mean of course averages.
+- GPA is the mean of course averages per student.
 - No advanced authentication or multi-user handling.
