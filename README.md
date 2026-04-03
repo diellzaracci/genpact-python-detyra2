@@ -21,7 +21,7 @@ A Python command-line application to manage students, courses, enrollments, and 
 
 ## Usage
 ### Seed sample data
-python scripts/seed.py
+>  python -m scripts.seed
 ### CLI commands
 - To add a new student:
   >  python main.py add-student --name "StudentName"
