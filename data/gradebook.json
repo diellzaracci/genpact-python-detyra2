@@ -1,0 +1,56 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "Diellza"
+        },
+        {
+            "id": 2,
+            "name": "Ili"
+        },
+        {
+            "id": 3,
+            "name": "Dion"
+        }
+    ],
+    "courses": [
+        {
+            "code": "DS",
+            "title": "Data Science"
+        },
+        {
+            "code": "ML",
+            "title": "Machine Learning"
+        }
+    ],
+    "enrollments": [
+        {
+            "student_id": 1,
+            "course_code": "DS",
+            "grades": [
+                88
+            ]
+        },
+        {
+            "student_id": 1,
+            "course_code": "ML",
+            "grades": [
+                99
+            ]
+        },
+        {
+            "student_id": 2,
+            "course_code": "ML",
+            "grades": [
+                70
+            ]
+        },
+        {
+            "student_id": 3,
+            "course_code": "DS",
+            "grades": [
+                82
+            ]
+        }
+    ]
+}
