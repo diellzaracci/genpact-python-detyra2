@@ -2,10 +2,11 @@ from gradebook.models import Student, Course, Enrollment
 from gradebook.storage import load_data, save_data
 
 def add_student(name):
+    """Add a new student and return their ID"""
     data = load_data()
     new_id = max([s["id"] for s in data["students"]], default=0)+1  # id e re
     
-    student_obj = Student(new_id, name)
+    student_obj = Student(new_id, name)     # me kriju objekt per mi validu & strukturu t'dhanat
 
     student = {"id": student_obj.id, "name": student_obj.name}
     data["students"].append(student)
@@ -13,6 +14,7 @@ def add_student(name):
     return new_id
 
 def add_course(code, title):
+    """Add a new course with code and title"""
     data = load_data()
     if any(c["code"]==code for c in data["courses"]):       # me check nese vecse ekziston qaj kod
         raise ValueError(f"Course {code} already exists")
@@ -24,6 +26,7 @@ def add_course(code, title):
     save_data(data)
 
 def enroll(student_id, course_code):
+    """Add a new enrollment of a student in a course"""
     data = load_data()
     if not any(s["id"] == student_id for s in data["students"]):    # validation per a ekziston qaj student
         raise ValueError(f"No student with id {student_id}")
@@ -39,6 +42,7 @@ def enroll(student_id, course_code):
     save_data(data)
 
 def add_grade(student_id, course_code, grade):
+    """Add grades to enrollments"""
     data = load_data()
     if not (0 <= grade <= 100):
         raise ValueError("Grade must be 0-100")
@@ -53,18 +57,22 @@ def add_grade(student_id, course_code, grade):
     raise ValueError("Enrollment not found")
     
 def list_students():
+    """List students alphabetically"""
     data = load_data()
     return sorted(data["students"], key=lambda s: s["name"].lower())   # me sort alfabetik pa dallim uppercase/lowercase - case-insensitive
 
 def list_courses():
+    """List courses alphabetically"""
     data = load_data()
     return sorted(data["courses"], key=lambda c: c["code"].lower())   # me sort alfabetik
 
 def list_enrollments():
+    """List enrollments alphabetically"""
     data = load_data()
     return data["enrollments"]
 
 def compute_average(student_id, course_code):
+    """Compute average grade in a course for a student"""
     data = load_data()
     for e in data["enrollments"]:
         if e["student_id"] ==student_id and e["course_code"]==course_code:
@@ -75,6 +83,7 @@ def compute_average(student_id, course_code):
     raise ValueError("Enrollment not found")
 
 def compute_gpa(student_id):
+    """Compute GPA of student"""
     data = load_data()
     course_averages =[]
     for e in data["enrollments"]:

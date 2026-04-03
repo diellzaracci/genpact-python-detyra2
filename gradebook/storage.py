@@ -16,6 +16,7 @@ logging.basicConfig(
 )
 
 def load_data():
+    """Load data from JSON file"""
     if not os.path.exists(DATA_PATH):
         return {"students": [], "courses": [], "enrollments": []}
 

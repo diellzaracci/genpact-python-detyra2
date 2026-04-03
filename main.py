@@ -43,8 +43,6 @@ def main():
     parser_gpa = subparsers.add_parser("gpa")
     parser_gpa.add_argument("--student-id", type=int, required=True)
 
-    ### A me shtu enrollments t sortume sipas ID??, tjera validations??
-
     args = parser.parse_args()
 
     try:

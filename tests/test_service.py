@@ -5,7 +5,7 @@ from gradebook.service import add_student, add_grade, add_course, enroll, comput
 class TestService(unittest.TestCase):
     
     def setUp(self):
-        # reser data before each test
+        # reset data before each test
         self.test_data = {
             "students": [],
             "courses": [],

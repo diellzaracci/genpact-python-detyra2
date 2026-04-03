@@ -1,4 +1,5 @@
 class Student:
+    """Class Student(id, name)"""
     def __init__(self, student_id, name):
         if not name.strip():
             raise ValueError("Name cannot be empty")
@@ -9,6 +10,7 @@ class Student:
         return f"Student {self.id}: {self.name}"
     
 class Course:
+    """Class Course(code, title)"""
     def __init__(self, code, title):
         if not code.strip() or not title.strip():
             raise ValueError("Code or title cannot be empty")
@@ -19,6 +21,7 @@ class Course:
         return f"Course {self.code}: {self.title}"
     
 class Enrollment:
+    """Class Enrollment(student_id, course_code, grades)"""
     def __init__(self, student_id, course_code, grades=None):
         self.student_id = student_id
         self.course_code = course_code
